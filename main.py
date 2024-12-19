@@ -1,8 +1,9 @@
-from image.ImageHandler import ImageHandler
-from image.ImageProcessor import ImageProcessor
+from Image.ImageHandler import ImageHandler
+from Image.ImageProcessor import ImageProcessor 
 
 def main_menu():
-    print("\n--- Меню работы с изображением ---")
+    print()
+    print(" Меню работы с изображением ".center(80,"="))
     print("1. Конвертировать изображение в формат PNG")
     print("2. Повернуть изображение на 45 градусов")
     print("3. Применить фильтр резкости")
