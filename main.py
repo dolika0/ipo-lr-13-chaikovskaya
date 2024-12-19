@@ -2,6 +2,7 @@ from Image.ImageHandler import ImageHandler
 from Image.ImageProcessor import ImageProcessor 
 
 def main_menu():
+    # Функция для отображения меню и получения выбора пользователя
     print()
     print(" Меню работы с изображением ".center(80,"="))
     print("1. Конвертировать изображение в формат PNG")
@@ -14,18 +15,20 @@ def main_menu():
     return input("Выберите действие: ")
 
 def main():
+    # Основная функция программы
     # Исходное изображение передаётся в коде
     initial_image_path = "image_5.jpg"  # Укажите путь к вашему изображению
     handler = ImageHandler(initial_image_path)
-    handler.load_image()
-    processor = ImageProcessor(handler.get_image())
+    handler.load_image()  # Загрузка изображения
+    processor = ImageProcessor(handler.get_image())  # Создание процессора изображений
 
     print("Изображение успешно загружено из пути:", initial_image_path)
 
     while True:
-        choice = main_menu()
+        choice = main_menu()  # Отображение меню и получение выбора пользователя
 
         if choice == "1":
+            # Конвертация изображения в формат PNG
             if handler.image:
                 save_path = input("Введите путь для сохранения (с расширением .png): ")
                 handler.convert_to_png(save_path)
@@ -34,6 +37,7 @@ def main():
                 print("Изображение не загружено.")
 
         elif choice == "2":
+            # Поворот изображения на 45 градусов
             if handler.image:
                 handler.rotate_image()
                 processor = ImageProcessor(handler.get_image())
@@ -42,6 +46,7 @@ def main():
                 print("Изображение не загружено.")
 
         elif choice == "3":
+            # Применение фильтра резкости
             if processor.image:
                 processor.apply_sharpen_filter()
                 print("Фильтр резкости применён.")
@@ -49,6 +54,7 @@ def main():
                 print("Изображение не загружено.")
 
         elif choice == "4":
+            # Добавление рамки к изображению
             if processor.image:
                 processor.add_border(border_width=15, color="black")
                 print("Рамка добавлена.")
@@ -56,6 +62,7 @@ def main():
                 print("Изображение не загружено.")
 
         elif choice == "5":
+            # Сохранение изображения
             if processor.image:
                 save_path = input("Введите путь для сохранения обработанного изображения: ")
                 processor.save_image(save_path)
@@ -68,6 +75,7 @@ def main():
                 print("Изображение не загружено.")
 
         elif choice == "6":
+            # Показ изображения
             if processor.image:
                 processor.image.show()
             elif handler.image:
@@ -76,6 +84,7 @@ def main():
                 print("Изображение не загружено.")
 
         elif choice == "7":
+            # Выход из программы
             print("Выход из программы.")
             break
 
